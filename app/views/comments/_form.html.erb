@@ -1,0 +1,16 @@
+<%= form_for([@post, @post.comments.build]) do |f| %>
+
+    <% if !parent.nil? %>
+        <%= f.hidden_field :parent_id, value:parent.id %>
+        <%= f.hidden_field :replyto, value:parent.user.email %>
+    <% end %>
+
+    <p>
+        <%= f.text_area :content, placeholder:"Comment here...", class:"form-control", style:"min-height:150px;", rows:"3" %>
+    </p>
+
+    <p>
+        <%= f.submit class:"btn btn-primary" %>
+    </p>
+
+<% end %>

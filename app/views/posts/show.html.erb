@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-body">
+    <div class="text-end">
+        <div class="dropstart">
+          <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <% if user_signed_in? %>
+              <% if current_user.id == @post.user.id %>
+                <li>
+                  <%= link_to 'Edit', edit_post_path, class:"dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to 'Delete', @post, class:"dropdown-item", method: :delete, data: { confirm: 'Are you sure?' } %>
+                </li>
+                <% end %>
+            <% end %>
+            <li>
+              <%= link_to 'Back', posts_path, class:"dropdown-item" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
+
+      <h1 class="text-center mb-4">
+        <%= @post.title %>
+      </h1>
+
+      <div class="justify-comment">
+        <p>
+          <%= simple_format(@post.body) %>
+        </p>
+      </div>
+
+      <br><br><hr>
+      
+      <p>
+        <%= render partial: 'comments/form', locals: { post: @post, parent: nil} %>
+      </p>
+
+      <div class="mb-4">
+        <strong>Comments:</strong>
+        <%= @post.comments.count %>
+      </div>
+
+      <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+  </div>
+</div>

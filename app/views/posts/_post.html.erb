@@ -1,0 +1,30 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<% obj.each do |post| %>
+  <div class="col">
+    <div class="card card-hover h-100">
+      <% if post.cover.attached? %>
+        <%= link_to image_tag(post.cover, size: "200x200", alt: "...", class:"card-img-top"), post %>
+      <% else %>
+        <%= link_to image_tag("https://kecamatanmegamendung.bogorkab.go.id/assets/imgs/placeholder.png", size: "200x200", alt: "...", class:"card-img-top"), post %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to truncate(post.title.upcase_first, length: 20), post, class:"text-decoration-none text-dark" %></h5>
+        <p class="card-text" style="text-align:justify"><%= truncate(post.body, length: 125) %></p>
+      </div>
+      <div class="btn-group m-1" role="group" aria-label="Basic mixed styles example">
+        <%= link_to 'View', post, class:"btn btn-outline-primary" %>
+        <% if user_signed_in? %>
+          <% if current_user.id == post.user.id %>
+            <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-primary" %>
+            <%= link_to 'Delete', post, class:"btn btn-outline-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-footer text-center">
+      <h6>by <%= link_to truncate(post.user.email, length: 15), profile_path(post.user.id), class:"text-decoration-none" %></h6>
+        <small class="text-muted">Created <%= time_ago_in_words(post.created_at) %> ago</small>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

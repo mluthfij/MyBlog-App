@@ -1,0 +1,48 @@
+<div>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3 col-md-5 col-lg-2 text-center">
+                    <div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS4QidFaZYBUsAO_ostR0S-m5nyF3u55L4dvn09QKrcTv5gzTmx80sfa-Rz48qJrKmAF4&usqp=CAU" alt="Avatar" class="avatar rounded-circle">
+                    </div>
+                    <small>
+                        <%= comment.user.email %>
+                    </small>
+                </div>
+                <div class="col-sm-9 col-md-5 offset-md-2 col-lg-10 offset-lg-0">
+                    <% if comment.replyto.present? %>
+                        <strong>Replying to <%= comment.replyto %></strong>
+                    <% end %>
+                    <div class="justify-comment">
+                        <p>
+                            <%= simple_format(comment.content) %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="text-end">
+                <%= link_to '', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?'}, class:"bi bi-trash" %>
+                <a class="" data-bs-toggle="collapse" href="#collapse<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="bi bi-reply"></i>
+                </a>
+            </h5>
+
+            <div class="collapse" id="collapse<%= comment.id %>">
+                <div class="card card-body">
+                    <%= render partial: 'comments/form', locals: {post: comment.post, parent: comment} %>
+                </div>
+            </div>
+            <div class="row text-center text-muted">
+                <small>
+                    <%= time_ago_in_words(comment.created_at) %> ago
+                </small>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="padding-left:30px;">
+        <%= render comment.comments %>
+    </div>
+</div>

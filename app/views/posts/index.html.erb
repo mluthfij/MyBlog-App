@@ -1,0 +1,6 @@
+<div class="text-center mb-2">
+  <h1>Posts</h1>
+  <%= link_to ' Create a new post', new_post_path, class:'btn bi bi-plus-lg' if user_signed_in? %>
+</div>
+
+<%= render 'post', obj: @posts %>

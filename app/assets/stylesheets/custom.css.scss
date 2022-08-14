@@ -1,0 +1,52 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar-brand {
+    font-size: 2rem;
+}
+/* Sticky Footer Classes */
+
+html,
+body {
+    height: 100%;
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+    background: #ffffff;
+    // background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+
+// post page
+.card-hover:hover {
+    transform: scale(1.05, 1.05);
+    // transition-duration: 1s;
+    transition: 0.3s;
+}
+
+// Ava
+.avatar {
+    // border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.avatar-lg {
+    // border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.justify-comment {
+    text-align: justify; 
+    text-justify: inter-word;
+}
+
+#more {
+    display: none;
+}

@@ -1,0 +1,58 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="text-end">
+      <div class="dropstart">
+        <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-three-dots-vertical"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <% if params[:action] == 'edit' %>
+            <li>
+              <%= link_to 'Show', @post, class:"dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to 'Delete', @post, class:"dropdown-item", method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to 'Back', posts_path, class:"dropdown-item" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <%= form.hidden_field :user_id, value:current_user.id %>
+
+      <%= form.file_field :cover %>
+
+      <div class="mb-3">
+        <%= form.label :title, class:"form-label" %>
+        <%= form.text_field :title, class:"form-control", placeholder:"Write your title here..." %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :body, class:"form-label" %>
+        <%= form.text_area :body, class:"form-control", placeholder:"Add some text...", rows:"3", style:"min-height:200px;" %>
+      </div>
+
+      <div class="field">
+      </div>
+
+      <div class="actions">
+        <%= form.submit class:"btn btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
