@@ -1,6 +1,6 @@
-<div class="card mb-2">
+<div class="card bg-dark card-profile">
   <div class="card-body">
-    <h1 class="text-center">
+    <h1 class="text-center text-white">
         <%= @profile.email %>
     </h1>
 
@@ -15,12 +15,13 @@
 </div>
 
 <% if current_user.id == @profile.id %>
+    <%= render 'posts/search' %>
     <div class="text-center mb-2">
         <h1>Posts</h1>
         <%= link_to ' Create a new post', new_post_path, class:'btn bi bi-plus-lg' %>
     </div>
 <% else %>
-    <div class="text-center mb-2">
+    <div class="text-center mb-2 mt-2">
         <h1>Posts</h1>
     </div>
 <% end %>
@@ -35,6 +36,6 @@
 <% else %>
 
 <div class="container">
-    <%= render 'posts/post', obj: @profile.posts %>
+  <%= render 'posts/post', obj: @posts %>
 </div>
 <% end %>

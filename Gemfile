@@ -28,6 +28,10 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 
 gem 'google-cloud-storage'
 
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
+
+gem 'ransack'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

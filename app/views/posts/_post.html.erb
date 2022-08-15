@@ -1,4 +1,7 @@
-<div class="row row-cols-1 row-cols-md-3 g-4 my-2 mb-4">
+<div class="d-flex justify-content-center">
+  <%= paginate @posts %>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">  
 <% obj.each do |post| %>
   <div class="col">
     <div class="card card-hover h-100">
@@ -27,4 +30,7 @@
     </div>
   </div>
 <% end %>
+</div>
+<div class="d-flex justify-content-center my-4">
+  <%= paginate @posts %>
 </div>

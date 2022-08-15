@@ -1,0 +1,31 @@
+  <table class="table table-bordered text-center table-secondary">
+    <thead>
+      <tr>
+        <th scope="col">
+        <h5 class="fw-bolder text-decoration-none">
+          <%= sort_link(@q, :created_at) %>
+        </h5>
+        </th>
+        <th scope="col">
+        <h5 class="fw-bolder text-decoration-none">
+          <%= sort_link(@q, :title) %>
+        </h5>
+        </th>
+        <th scope="col">
+          <form action="" id="myForm">
+          <%= search_form_for @q do |f| %>
+            <div class="input-group" >
+              <%= f.text_field :title_cont, class: 'form-control', placeholder:"Search" %>
+              <%= f.submit 'Submit', class: 'btn btn-success' %>
+            </div>
+          <% end %>
+          </form>
+        </th>
+        <th scope="col">
+        <h5 class="fw-bolder">
+          <%= link_to 'Reset', class: 'btn btn-success', onclick:"myFunction()" %>
+        </h5>
+        </th>
+      </tr>
+    </thead>
+  </table>

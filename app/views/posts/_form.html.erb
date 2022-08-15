@@ -21,11 +21,15 @@
         <ul class="dropdown-menu">
           <% if params[:action] == 'edit' %>
             <li>
+              <%= link_to 'Create new post', new_post_path, class:"dropdown-item" %>
+            </li>
+            <li>
               <%= link_to 'Show', @post, class:"dropdown-item" %>
             </li>
             <li>
               <%= link_to 'Delete', @post, class:"dropdown-item", method: :delete, data: { confirm: 'Are you sure?' } %>
             </li>
+            <li><hr class="dropdown-divider"></li>
           <% end %>
           <li>
             <%= link_to 'Back', posts_path, class:"dropdown-item" %>
