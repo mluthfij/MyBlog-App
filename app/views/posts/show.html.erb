@@ -54,8 +54,10 @@
     </div>
     <div class="m-4">
       <div class="mb-4">
-        <strong>Comments:</strong>
-        <%= @post.comments.count %>
+        <h5>
+          <strong>Comments:</strong>
+          <%= @post.comments.count %>
+        </h5>
       </div>
       <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
     </div>

@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if !@comment.save
         flash[:notice] = @comment.errors.full_messages.to_sentence
     end
-
+    flash[:notice] = "Comment has been sent successfully."
     redirect_to post_path(@post)
   end
 
@@ -31,6 +31,4 @@ class CommentsController < ApplicationController
     .permit(:content, :parent_id, :replyto)
     .merge(post_id: params[:post_id])
   end
-  
-  
 end

@@ -12,7 +12,7 @@
                     </div>
 
                     <small>
-                        <%= link_to comment.user.email, profile_path(comment.user.id) %>
+                        <%= link_to truncate(comment.user.email, length:20), profile_path(comment.user.id), class:"text-decoration-none" %>
                     </small>
                 </div>
                 <div class="col-sm-9 col-md-5 offset-md-2 col-lg-10 offset-lg-0">
@@ -21,10 +21,8 @@
                     <% end %>
                     <div class="justify-comment">
                         <div class="card my-2">
-                            <div class="card-body">
-                                <p>
-                                    <%= simple_format(comment.content) %>
-                                </p>
+                            <div class="ms-3 me-2 my-1 mb-2">
+                                <%= simple_format(comment.content) %>
                             </div>
                         </div>
                     </div>
