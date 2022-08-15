@@ -1,0 +1,14 @@
+<div class="card text-center card-jumbotron bg-dark bg-gradient bg-opacity-75">
+  <div class="card-body text-white">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <% if user_signed_in? %>
+      <%= link_to 'Create new post', new_post_path, class:"btn btn-primary" %>
+    <% else %>
+      <%= link_to 'Create new account', new_user_registration_path, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
+

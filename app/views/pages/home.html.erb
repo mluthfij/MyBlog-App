@@ -1,28 +1,27 @@
 <% if @posts.empty? %>
-<div class="card text-center card-jumbotron bg-dark bg-gradient bg-opacity-75">
-  <div class="card-body text-white">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <%= link_to 'Create new account', new_user_registration_path, class:"btn btn-primary" %>
-  </div>
-</div>
-<% if params[:action] == 'home'  %>
-  <%= render 'layouts/messages' %>
-<% end %>
 
-<div class="alert alert-success container my-4" role="alert">
-  <h4 class="alert-heading">Well done!</h4>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>
+  <%= render 'jumbotron' %>
+
+  <% if params[:action] == 'home'  %>
+    <%= render 'layouts/messages' %>
+  <% end %>
+
+  <%= render 'emptyalert' %>
+
 <% else %>
-<%= render 'carousel' %>
-<% if params[:action] == 'home'  %>
-  <%= render 'layouts/messages' %>
-<% end %>
 
-<div class="container">
-  <%= render 'posts/post', obj: @posts %>
-</div>
+  <% if user_signed_in? %>
+    <%= render 'carousel' %>
+  <% else %>
+    <%= render 'jumbotron' %>
+  <% end %>
+
+  <% if params[:action] == 'home'  %>
+    <%= render 'layouts/messages' %>
+  <% end %>
+
+  <div class="container">
+    <%= render 'posts/post', obj: @posts %>
+  </div>
+
 <% end %>
