@@ -14,14 +14,12 @@
   <body class="d-flex flex-column">
   
   <%= render 'layouts/navbar' %>
-  
   <div id="page-content">
+    <%= render 'layouts/messages' %>
     <div>
-      <% if params[:action] != 'home'  %>
-        <%= render 'layouts/messages' %>
-      <% end %>
         <%= yield %>
     </div>
+  
   </div>
   <%= render 'layouts/footer' %>
   </body>

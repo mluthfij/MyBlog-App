@@ -5,9 +5,13 @@
     </h1>
 
     <div class="text-center">
-        <h1>
-            <img src="https://i.imgur.com/7D7I6dI.png" alt="Avatar" class="avatar-lg shadow mb-3 my-2 rounded-circle">
-        </h1>
+      <div>
+        <% if @profile.avatar.present? %>
+          <%= image_tag(@profile.avatar.variant(resize_to_fill: [150, 150]), class: "avatar-lg shadow mb-3 my-2 rounded-circle") %>
+        <% else %>
+          <img src="https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-user-mysterious-anonymous-account-vector-png-image_4816288.png" alt="Avatar" class="avatar-lg shadow mb-3 my-2 rounded-circle">
+        <% end %>
+      </div>
         <span class="badge rounded-pill text-bg-dark">Has <%= @profile.posts.count %> posts</span>
         <div class="my-2"><%= link_to 'Edit Profile', edit_user_registration_path, class:"btn btn-outline-danger btn-sm" if current_user.id == @profile.id %></div class="my-2">
     </div>

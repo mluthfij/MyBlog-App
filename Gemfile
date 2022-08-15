@@ -32,6 +32,8 @@ gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
 gem 'ransack'
 
+gem 'file_validators', '~> 3.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

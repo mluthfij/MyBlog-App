@@ -4,10 +4,15 @@
             <div class="row">
                 <div class="col-sm-3 col-md-5 col-lg-2 text-center">
                     <div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS4QidFaZYBUsAO_ostR0S-m5nyF3u55L4dvn09QKrcTv5gzTmx80sfa-Rz48qJrKmAF4&usqp=CAU" alt="Avatar" class="avatar rounded-circle">
+                        <% if comment.user.avatar.present? %>
+                            <%= link_to image_tag(comment.user.avatar.variant(resize_to_fill: [100, 100]), class: "avatar shadow rounded-circle"), profile_path(comment.user.id) %>
+                        <% else %>
+                            <%= link_to image_tag("https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-user-mysterious-anonymous-account-vector-png-image_4816288.png", class: "avatar shadow rounded-circle"), profile_path(comment.user.id) %>
+                        <% end %>
                     </div>
+
                     <small>
-                        <%= comment.user.email %>
+                        <%= link_to comment.user.email, profile_path(comment.user.id) %>
                     </small>
                 </div>
                 <div class="col-sm-9 col-md-5 offset-md-2 col-lg-10 offset-lg-0">
@@ -15,9 +20,13 @@
                         <strong>Replying to <%= comment.replyto %></strong>
                     <% end %>
                     <div class="justify-comment">
-                        <p>
-                            <%= simple_format(comment.content) %>
-                        </p>
+                        <div class="card my-2">
+                            <div class="card-body">
+                                <p>
+                                    <%= simple_format(comment.content) %>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

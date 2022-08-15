@@ -2,10 +2,6 @@
 
   <%= render 'jumbotron' %>
 
-  <% if params[:action] == 'home'  %>
-    <%= render 'layouts/messages' %>
-  <% end %>
-
   <%= render 'emptyalert' %>
 
 <% else %>
@@ -14,10 +10,6 @@
     <%= render 'carousel' %>
   <% else %>
     <%= render 'jumbotron' %>
-  <% end %>
-
-  <% if params[:action] == 'home'  %>
-    <%= render 'layouts/messages' %>
   <% end %>
 
   <div class="container my-3">

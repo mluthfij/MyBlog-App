@@ -64,3 +64,25 @@ body {
 .card-profile {
     border-radius: .0rem .0rem .3rem .3rem;
 }
+
+.alert-message {
+    animation:mymove 10s;
+    visibility: hidden;
+    top: 10px;
+    z-index: 999;
+}
+
+.card-show-post {
+    min-height: 472px;
+}
+
+@keyframes mymove {
+    from {
+        visibility: visible;
+    }        
+
+    to {
+        visibility: hidden;
+    }
+}
+

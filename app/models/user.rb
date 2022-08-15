@@ -6,7 +6,11 @@ class User < ApplicationRecord
 
          has_many :posts
          has_many :comments, dependent: :destroy
+    
+         # Avatar Attachment
+         has_one_attached :avatar
 
-    # paginates_per 6
-
+         # Validation 
+         validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
+              file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
 end

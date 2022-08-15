@@ -1,5 +1,5 @@
 <div class="container my-4">
-<div class="card">
+<div class="card card-show-post bg-secondary bg-opacity-25 shadow">
   <div class="card-body">
     <div class="text-end">
         <div class="dropstart">
@@ -31,31 +31,33 @@
       
 
       <h1 class="text-center mb-4">
-        <%= @post.title %>
+        <%= @post.title.upcase %>
       </h1>
 
-      <div class="justify-comment">
+      <div class="justify-comment me-3 ms-3">
         <p>
-          <%= simple_format(@post.body) %>
+          <%= simple_format(@post.body.upcase_first) %>
         </p>
       </div>
   </div>
 </div>
 </div>
 
-<div class="container">
-  <p>
-    <%= render partial: 'comments/form', locals: { post: @post, parent: nil} %>
-  </p>
-</div>
+<div class="card">
+  <div class="card-footer">
+    <div class="container">
+  <h1>Comment Form</h1>
 
-<div class="m-4">
-
-  <div class="mb-4">
-    <strong>Comments:</strong>
-    <%= @post.comments.count %>
+      <p>
+        <%= render partial: 'comments/form', locals: { post: @post, parent: nil} %>
+      </p>
+    </div>
+    <div class="m-4">
+      <div class="mb-4">
+        <strong>Comments:</strong>
+        <%= @post.comments.count %>
+      </div>
+      <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+    </div>
   </div>
-
-  <%= render @post.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
 </div>
-    
