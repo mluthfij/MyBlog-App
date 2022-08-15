@@ -12,7 +12,7 @@
                     </div>
 
                     <small>
-                        <%= link_to truncate(comment.user.email, length:20), profile_path(comment.user.id), class:"text-decoration-none" %>
+                        <%= link_to truncate(comment.user.username, length:20), profile_path(comment.user.id), class:"text-decoration-none" %>
                     </small>
                 </div>
                 <div class="col-sm-9 col-md-5 offset-md-2 col-lg-10 offset-lg-0">

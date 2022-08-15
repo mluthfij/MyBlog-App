@@ -3,9 +3,10 @@
 <div class="card">
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
     <div class="mb-3">
-      <%= f.label :email, class:"form-label" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"name@example.com" %>
+      <%= f.label :login, class:"form-label" %><br />
+      <%= f.text_field :login, autofocus: true, class:"form-control", placeholder:"name@example.com" %>
     </div>
 
     <div class="mb-3">

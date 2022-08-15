@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col border">
         <h1 class="text-center">
-            <%= current_user.email %>
+            <%= current_user.username %>
         </h1>
         <div class="text-center">
             <div>
@@ -47,6 +47,10 @@
       </div>
       <!--Avatar Upload Field-->
 
+      <div class="mb-3">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
 
       <div class="mb-3">
         <%= f.label :email, 'Email address', class:"form-label" %>
