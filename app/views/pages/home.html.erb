@@ -7,13 +7,15 @@
 <% else %>
 
   <% if user_signed_in? %>
-    <%= render 'carousel' %>
+    <%= render 'carousel', obj: @posts %>
   <% else %>
+    <%= render 'carousel', obj: @posts %>
     <%= render 'jumbotron' %>
   <% end %>
 
   <div class="container my-3">
-    <%= render 'posts/post', obj: @posts %>
+    <h1 class="text-center mb-3">Latest Post</h1>
+      <%= render 'posts/post', obj: @posts %>
   </div>
 
 <% end %>

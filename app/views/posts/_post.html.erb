@@ -1,6 +1,9 @@
+<% if params[:action] != 'home' %>
 <div class="d-flex justify-content-center">
   <%= paginate @posts %>
 </div>
+<% end %>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">  
 <% obj.each do |post| %>
   <div class="col">
@@ -24,13 +27,16 @@
         <% end %>
       </div>
       <div class="card-footer text-center">
-      <h6>by <%= link_to truncate(post.user.email, length: 15), profile_path(post.user.id), class:"text-decoration-none" %></h6>
+      <h6>by <%= link_to truncate(post.user.username, length: 15), profile_path(post.user.id), class:"text-decoration-none" %></h6>
         <small class="text-muted">Created <%= time_ago_in_words(post.created_at) %> ago</small>
       </div>
     </div>
   </div>
 <% end %>
 </div>
+
+<% if params[:action] != 'home' %>
 <div class="d-flex justify-content-center my-4">
   <%= paginate @posts %>
 </div>
+<% end %>

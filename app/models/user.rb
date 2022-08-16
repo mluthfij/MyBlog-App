@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+        #  :confirmable
 
          has_many :posts, dependent: :destroy
          has_many :comments, dependent: :destroy
@@ -13,12 +14,14 @@ class User < ApplicationRecord
          # Validation 
          validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
               file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
-         
-         VALID_USERNAME_REGEX = /\A[a-z0-9_]{4,16}\z/
+           # only allow letter, number, underscore and punctuation.
+      
+         validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+        #  VALID_USERNAME_REGEX = /\A[a-z0-9_]{4,16}\z/
          validates :username, presence: true, 
                      uniqueness: { case_sensitive: false }, 
-                     length: { minimum: 3, maximum: 25 },
-                     format: { with: VALID_USERNAME_REGEX }
+                     length: { minimum: 3, maximum: 25 }
+                    #  format: { with: VALID_USERNAME_REGEX }
          VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
          validates :email, presence: true, 
                      uniqueness: { case_sensitive: false }, 

@@ -19,3 +19,4 @@ require("@rails/actiontext")
 function myFunction() {
     document.getElementById("myForm").reset();
 }
+

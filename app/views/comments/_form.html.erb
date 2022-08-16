@@ -2,7 +2,7 @@
 
     <% if !parent.nil? %>
         <%= f.hidden_field :parent_id, value:parent.id %>
-        <%= f.hidden_field :replyto, value:parent.user.email %>
+        <%= f.hidden_field :replyto, value:parent.user.username %>
     <% end %>
 
     <p>

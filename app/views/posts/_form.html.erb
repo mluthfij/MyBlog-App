@@ -31,6 +31,18 @@
 
     <%= form.hidden_field :user_id, value:current_user.id %>
 
+      <% if params[:action] == 'edit' %>
+
+    <div class="position-relative mb-3">
+      <div class="height-card-show">
+          <% if post.cover.attached? %>
+            <%= image_tag(post.cover, size: "200x200", alt: "...", class:"img-show img-thumbnail rounded") %>
+          <% end %>
+      </div>
+    </div>
+      
+      <% end %>
+
       <div class="mb-3">
         <%= form.label :cover, class:"form-label" %>
         <%= form.file_field :cover, class:"form-control form-control-lg" %>
@@ -40,12 +52,11 @@
         <%= form.label :title, class:"form-label" %>
         <%= form.text_field :title, class:"form-control", placeholder:"Write your title here..." %>
       </div>
+
       <div class="mb-3">
         <%= form.label :body, class:"form-label" %>
-        <%= form.text_area :body, class:"form-control", placeholder:"Add some text...", rows:"3", style:"min-height:200px;" %>
-      </div>
-
-      <div class="field">
+        <%= form.text_area :body, class:"form-control", placeholder:"Add some text...", rows:"3", style:"min-height:200px;", id:"letter" %>
+        Count: <small class="text-end" id="show">0</small>
       </div>
 
       <div class="actions">
@@ -55,3 +66,19 @@
     <% end %>
   </div>
 </div>
+
+<script>
+      document
+        .querySelector("#letter")
+        .addEventListener("input", function countWord() {
+          let res = [];
+          let str = this.value.split("");
+          str.map((s) => {
+            let trimStr = s.trim();
+            if (trimStr.length > 0) {
+              res.push(trimStr);
+            }
+          });
+          document.querySelector("#show").innerText = res.length;
+        });
+</script>

@@ -3,7 +3,7 @@
   <div class="card-body">
     <div class="text-end">
         <div class="dropstart">
-          <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+          <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu">
@@ -28,6 +28,13 @@
         </div>
       </div>
 
+    <div class="position-relative mb-3">
+      <div class="height-card-show">
+          <% if @post.cover.attached? %>
+            <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-show img-thumbnail rounded") %>
+          <% end %>
+      </div>
+    </div>
       
 
       <h1 class="text-center mb-4">
