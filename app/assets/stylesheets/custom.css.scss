@@ -76,29 +76,8 @@ body {
     z-index: 999;
 }
 
-// .alert-message {
-//     position: fixed;
-//         top: 0px;
-//         left: 0px;
-//         width: 100%;
-//         z-index: 9999;
-//         border-radius: 0px
-// }
-
 .card-show-post {
     min-height: 472px;
-}
-
-.img-show {
-    width: 100%;
-    height: auto;
-}
-
-.height-card-show {
-    // display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25rem;
 }
 
 .img-carousel {
@@ -109,6 +88,19 @@ body {
     height: 500px;
 }
 
+
+.img-show {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 14rem;
+    width: 100%;
+}
+
+.avatar-sm {
+    width: 40px;
+    height: auto;
+}
 
 @keyframes mymove {
     from {

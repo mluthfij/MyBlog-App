@@ -5,7 +5,7 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   
     <div class="mb-3">
-      <%= f.label :login, class:"form-label" %><br />
+      <%= f.label :login, 'Username or email address', class:"form-label" %><br />
       <%= f.text_field :login, autofocus: true, class:"form-control", placeholder:"Username or email" %>
     </div>
 

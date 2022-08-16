@@ -21,8 +21,11 @@
         <%= link_to 'View', post, class:"btn btn-outline-primary" %>
         <% if user_signed_in? %>
           <% if current_user.id == post.user.id %>
+            <% if params[:action] != 'home' %>
+
             <%= link_to 'Edit', edit_post_path(post), class:"btn btn-outline-primary" %>
             <%= link_to 'Delete', post, class:"btn btn-outline-primary", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           <% end %>
         <% end %>
       </div>

@@ -28,13 +28,9 @@
         </div>
       </div>
 
-    <div class="position-relative mb-3">
-      <div class="height-card-show">
-          <% if @post.cover.attached? %>
-            <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-show img-thumbnail rounded") %>
-          <% end %>
-      </div>
-    </div>
+      <% if @post.cover.attached? %>
+        <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-thumbnail rounded img-show") %>
+      <% end %>
       
 
       <h1 class="text-center mb-4">
