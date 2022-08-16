@@ -26,7 +26,8 @@ gem 'image_processing', '~> 1.2'
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
-gem 'google-cloud-storage'
+# gem 'google-cloud-storage'
+gem 'google-cloud-storage', '~> 1.38', require: false
 
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 

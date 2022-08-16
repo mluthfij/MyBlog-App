@@ -314,7 +314,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise (~> 4.8, >= 4.8.1)
   file_validators (~> 3.0)
-  google-cloud-storage
+  google-cloud-storage (~> 1.38)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari (~> 1.2, >= 1.2.2)
