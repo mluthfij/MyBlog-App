@@ -66,11 +66,20 @@ body {
 }
 
 .alert-message {
-    animation:mymove 10s;
+    animation:mymove 6s;
     visibility: hidden;
     top: 10px;
     z-index: 999;
 }
+
+// .alert-message {
+//     position: fixed;
+//         top: 0px;
+//         left: 0px;
+//         width: 100%;
+//         z-index: 9999;
+//         border-radius: 0px
+// }
 
 .card-show-post {
     min-height: 472px;

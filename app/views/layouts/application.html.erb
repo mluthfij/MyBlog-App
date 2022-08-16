@@ -15,7 +15,10 @@
   
   <%= render 'layouts/navbar' %>
   <div id="page-content">
+  <%# <% if flash %>
+  <% if flash.any? %>
     <%= render 'layouts/messages' %>
+  <% end %>
     <div>
         <%= yield %>
     </div>
