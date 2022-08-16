@@ -13,6 +13,17 @@ class User < ApplicationRecord
          # Validation 
          validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
               file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
+         
+         VALID_USERNAME_REGEX = /\A[a-z0-9_]{4,16}\z/
+         validates :username, presence: true, 
+                     uniqueness: { case_sensitive: false }, 
+                     length: { minimum: 3, maximum: 25 },
+                     format: { with: VALID_USERNAME_REGEX }
+         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+         validates :email, presence: true, 
+                     uniqueness: { case_sensitive: false }, 
+                     length: { maximum: 105 },
+                     format: { with: VALID_EMAIL_REGEX }
 
   attr_writer :login
   validate :validate_username
