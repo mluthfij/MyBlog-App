@@ -2,14 +2,16 @@
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
   <% obj.each_with_index do |c, index| %>
-    <% if index < 5 %>
+    <%# <% next c.cover if !c.cover.attached? %>
+    <% if index < 6 %>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="<%= index %>" class="active" aria-current="true" aria-label="Slide 1"></button>
     <% end %>
   <% end %>
   </div>
   <div class="carousel-inner">
   <% obj.each_with_index do |c, index| %>
-    <% if index < 5 %>
+    <%# <% next c.cover if !c.cover.attached? %>
+    <% if index < 6 %>
     <div class="carousel-item <%= index == 0 ? 'active' : '0' %>" data-bs-interval="4000">
       <% if c.cover.attached? %>
         <%= image_tag(c.cover, size: "200x200", alt: "...", class:"d-block w-100 img-carousel") %>
@@ -25,13 +27,17 @@
 
   <% end %>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+  <% obj.each_with_index do |c, index| %>
+    <% if index > 1 %>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    <% end %>
+  <% end %>
+  </div>
 </div>

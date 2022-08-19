@@ -1,31 +1,31 @@
-  <table class="table table-bordered text-center table-dark">
-    <thead>
-      <tr>
-        <th scope="col">
-        <h5 class="fw-bolder">
-          <%= sort_link(@q, :created_at) %>
-        </h5>
-        </th>
-        <th scope="col">
-        <h5 class="fw-bolder text-decoration-none">
-          <%= sort_link(@q, :title) %>
-        </h5>
-        </th>
-        <th scope="col">
-          <form action="" id="myForm">
-          <%= search_form_for @q do |f| %>
-            <div class="input-group" >
-              <%= f.text_field :title_cont, class: 'form-control', placeholder:"Search" %>
-              <%= f.submit 'Submit', class: 'btn btn-success' %>
-            </div>
-          <% end %>
-          </form>
-        </th>
-        <th scope="col">
-        <h5 class="fw-bolder">
-          <%= link_to 'Reset', class: 'btn btn-success', onclick:"myFunction()" %>
-        </h5>
-        </th>
-      </tr>
-    </thead>
-  </table>
+<ul class="nav nav-pills nav-fill bg-dark">
+  <li class="nav-item">
+  <div class="ms-4 me-4 my-2">
+    <form action="" id="myForm">
+      <%= search_form_for @q do |f| %>
+        <div class="input-group">
+          <%= f.text_field :title_cont, class: 'form-control', placeholder:"Search" %>
+          <%= f.submit 'Submit', class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </form>
+  </div>
+  </li>
+</ul>
+<ul class="nav nav-pills nav-fill bg-dark">
+  <li class="nav-item mb-4">
+    <a class="nav-link">
+      <%= sort_link(@q, :created_at, class:"fs-3") %>
+    </a>
+  </li>
+  <li class="nav-item mb-4">
+    <a class="nav-link">
+      <%= sort_link(@q, :title, class:"fs-3") %>
+    </a>
+  </li>
+  <li class="nav-item mb-4">
+    <a class="nav-link">
+      <%= link_to 'Reset', posts_path, class:"fs-3", onclick:"myFunction()" %>
+    </a>
+  </li>
+</ul>

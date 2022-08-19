@@ -1,4 +1,11 @@
-<div>
+    <% if !comment.parent.nil? %>
+    <div class="d-flex" style="height: 30px; padding-left:110px;">
+        <div class="vr"></div>
+    </div>
+    <% else %>
+    <br>
+    <% end %>
+
     <div class="card shadow">
         <div class="card-body">
             <div class="row">
@@ -12,12 +19,12 @@
                     </div>
 
                     <small>
-                        <%= link_to truncate(comment.user.username, length:20), profile_path(comment.user.id), class:"text-decoration-none" %>
+                        <%= link_to truncate(comment.user.username, length:20), profile_path(comment.user.id), class:"text-decoration-none text-dark" %>
                     </small>
                 </div>
                 <div class="col-sm-9 col-md-5 offset-md-2 col-lg-10 offset-lg-0">
                     <% if comment.replyto.present? %>
-                        <strong>Replying to @<%= comment.replyto %></strong>
+                        <strong>Replying to <%= link_to truncate(comment.replyto, length:20), profile_path(comment.user.id), class:"text-decoration-none" %></strong>
                     <% end %>
                     <div class="justify-comment">
                         <div class="card my-2">
@@ -48,8 +55,7 @@
             </div>
         </div>
     </div>
-    <br>
+    
     <div style="padding-left:30px;">
         <%= render comment.comments %>
     </div>
-</div>

@@ -29,7 +29,7 @@
       </div>
 
       <% if @post.cover.attached? %>
-        <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-thumbnail rounded img-show") %>
+        <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-thumbnail rounded img-show my-2") %>
       <% end %>
       
 
@@ -43,6 +43,23 @@
         </p>
       </div>
   </div>
+  
+  <div class="card-footer text-muted">
+ 
+  <div class="row">
+    <div class="col-4">
+      <% if @post.user.avatar.present? %>
+        <%= link_to image_tag(@post.user.avatar.variant(resize_to_fill: [100, 100]), class: "avatar-sm shadow rounded-circle"), profile_path(@post.user.id) %>
+      <% else %>
+        <%= link_to image_tag("https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-user-mysterious-anonymous-account-vector-png-image_4816288.png", class: "avatar-sm shadow rounded-circle"), profile_path(@post.user.id) %>
+      <% end %>
+      <%= truncate(@post.user.username, length: 15) %>
+    </div>
+    <div class="col-8 my-2 text-end">
+      Created <%= time_ago_in_words(@post.created_at) %> ago
+    </div>
+  </div>
+  </div>
 </div>
 </div>
 
@@ -50,7 +67,6 @@
   <div class="card-footer">
     <div class="container">
   <h1>Comment Form</h1>
-
       <p>
         <%= render partial: 'comments/form', locals: { post: @post, parent: nil} %>
       </p>
