@@ -13,10 +13,10 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import "direct_uploads"
+
 require("trix")
 require("@rails/actiontext")
-
-import "direct_uploads"
 
 function myFunction() {
     document.getElementById("myForm").reset();
