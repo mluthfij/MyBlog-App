@@ -14,7 +14,7 @@
     <% if index < 6 %>
     <div class="carousel-item <%= index == 0 ? 'active' : '0' %>" data-bs-interval="4000">
       <% if !c.richbody.embeds.empty? %>
-          <%= image_tag c.richbody.embeds.find{|embeds| embeds.image?}.variant(resize_to_limit: [500, 500]), class:"d-block w-100 img-carousel" %>
+          <%= image_tag c.richbody.embeds.find{|embeds| embeds.image?}.variant(loader: { page: nil }, coalesce: true, resize_to_limit: [500, 500]), class:"d-block w-100 img-carousel" %>
       <% else %>
         <%= image_tag("https://kecamatanmegamendung.bogorkab.go.id/assets/imgs/placeholder.png", size: "200x200", alt: "...", class:"d-block w-100 img-carousel") %>
       <% end %>

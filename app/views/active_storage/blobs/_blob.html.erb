@@ -1,6 +1,7 @@
 <figure class="attachment attachment--<%= blob.representable? ? "preview" : "file" %> attachment--<%= blob.filename.extension %>">
   <% if blob.representable? %>
-    <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 400, 300 ] : [ 812, 384 ]), class:"img-thumbnail" %>
+    <%# <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 400, 300 ] : [ 812, 384 ]), class:"img-thumbnail" %>
+    <%= image_tag url_for(blob.representation(loader: { page: nil }, coalesce: true, resize_to_limit: local_assigns[:in_gallery] ? [ 400, 300 ] : [ 812, 384 ])), class:"img-thumbnail" %>
   <% end %>
 
   <figcaption class="attachment__caption">
