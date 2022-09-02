@@ -82,6 +82,7 @@ body {
 
 .img-carousel {
     height: 500px;
+    object-fit: contain;
 }
 
 .carousel-item {
@@ -90,16 +91,22 @@ body {
 
 
 .img-show {
+    object-fit: contain;
+
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: auto;
+    height: 400px;
     width: 100%;
 }
 
 .avatar-sm {
     width: 40px;
     height: auto;
+}
+
+.card-image {
+    object-fit: contain;
 }
 
 @keyframes mymove {

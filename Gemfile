@@ -35,6 +35,10 @@ gem 'ransack'
 
 gem 'file_validators', '~> 3.0'
 
+# 
+# gem 'trix-rails', '~> 2.4'
+# 
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -1,9 +1,9 @@
 <div class="container my-4">
 <div class="card card-show-post bg-secondary bg-opacity-25 shadow">
   <div class="card-body">
-    <div class="text-end">
+    <div class="position-absolute end-0 me-3" style="top:16px;">
         <div class="dropstart">
-          <button type="button" class="btn btn-outline-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+          <button type="button" class="btn btn-dark" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu">
@@ -29,7 +29,7 @@
       </div>
 
       <% if @post.cover.attached? %>
-        <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-thumbnail rounded img-show my-2") %>
+        <%= image_tag(@post.cover, size: "200x200", alt: "...", class:"img-thumbnail rounded img-show") %>
       <% end %>
       
 
