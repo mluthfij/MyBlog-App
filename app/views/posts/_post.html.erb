@@ -8,14 +8,21 @@
 <% obj.each do |post| %>
   <div class="col">
     <div class="card card-hover h-100">
-      <% if post.cover.attached? %>
-        <%= link_to image_tag(post.cover, size: "200x200", alt: "...", class:"card-img-top card-image"), post %>
+      <%#  %>
+      <% if !post.richbody.embeds.empty? %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.richbody.embeds.find{|embeds| embeds.image?}.variant(resize_to_limit: [500, 500]), height:"250px", class:"card-img-top card-image" %>
+        <% end %>
       <% else %>
         <%= link_to image_tag("https://kecamatanmegamendung.bogorkab.go.id/assets/imgs/placeholder.png", size: "200x200", alt: "...", class:"card-img-top"), post %>
       <% end %>
+      <%#  %>
       <div class="card-body">
         <h5 class="card-title"><%= link_to truncate(post.title.upcase_first, length: 20), post, class:"text-decoration-none text-dark" %></h5>
-        <p class="card-text" style="text-align:justify"><%= truncate(post.body, length: 125) %></p>
+        <%# <p class="card-text" style="text-align:justify"><%= truncate(post.body, length: 125) %>
+        <p style="text-align:justify;">
+          <%= truncate(post.richbody.to_plain_text.upcase_first, length:125) %>
+        </p>
       </div>
       <div class="btn-group m-1" role="group" aria-label="Basic mixed styles example">
         <%= link_to 'View', post, class:"btn btn-outline-primary" %>

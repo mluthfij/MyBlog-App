@@ -16,6 +16,8 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 
+import "direct_uploads"
+
 function myFunction() {
     document.getElementById("myForm").reset();
 }

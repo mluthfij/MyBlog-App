@@ -29,24 +29,7 @@
         <%= render 'layouts/error_messages', obj: post %>
       <% end %>
 
-    <%= form.hidden_field :user_id, value:current_user.id %>
-
-      <% if params[:action] == 'edit' %>
-
-    <div class="position-relative mb-3">
-      <div class="height-card-show">
-          <% if post.cover.attached? %>
-            <%= image_tag(post.cover, size: "200x200", alt: "...", class:"img-show img-thumbnail rounded") %>
-          <% end %>
-      </div>
-    </div>
-      
-      <% end %>
-
-      <div class="mb-3">
-        <%= form.label :cover, class:"form-label" %>
-        <%= form.file_field :cover, class:"form-control form-control-lg" %>
-      </div>
+      <%= form.hidden_field :user_id, value:current_user.id %>
 
       <div class="mb-3">
         <%= form.label :title, class:"form-label" %>
@@ -54,8 +37,8 @@
       </div>
 
       <div class="mb-3">
-        <%= form.label :body, class:"form-label" %>
-        <%= form.text_area :body, class:"form-control", placeholder:"Add some text...", rows:"3", style:"min-height:200px;", id:"letter" %>
+        <%= form.label :richbody, class:"form-label" %>
+        <%= form.rich_text_area :richbody, class:"form-control", placeholder:"Add some text...", rows:"3", style:"min-height:200px;", id:"letter" %>
         Count: <small class="text-end" id="show">0</small>
       </div>
       

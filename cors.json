@@ -1,19 +1,21 @@
 [
     {
         "origin": [
-            "*"
+            "http://localhost:3000",
+            "https://storage.googleapis.com/my-rails-active-storage/kum2fflrrxjd8f5v0eehsuxegr4b?GoogleAccessId=my-ruby-on-rails%40projectrails-358501.iam.gserviceaccount.com&Expires=1662090634&Signature=Kow6ktzKbVa7oYSlVyxI1KxUHGMrVwDTeU9O9T4h%2FTz8eaooAWjLzfeAg7TJrF2WA9GRpNSKgMhCrhai5kvTuir%2BKPuvEv8Mj3nDBAP7dr%2FXXn%2B%2FPTex2Ut0YseGwgTfCjyOPeWjcl%2FysFo1gOsyfIvWVyaYsitcfuI6pvKclCRth%2FCuDfQk6pm50AyEioAoqwag7zqZjOdmjSHuZiHH3mS1qCZuSTpqevOdvAY3Q5D8ACSPC8eKVqFvUafJYtOlryZTtm8E7REMZaxXUA89bTJlNucRcwxn8DrPO%2B2%2BDHk0EN7Ep%2FnaWQBWTHwchTrOOf153ro5rE1%2FnhiUZi%2FDZA%3D%3D",
+            "https://storage.cloud.google.com/my-rails-active-storage/"
         ],
         "responseHeader": [
+            "Origin",
             "Content-Type",
-            "Content-Md5"
+            "Content-MD5",
+            "Content-Disposition"
         ],
         "method": [
+            "PUT",
             "GET",
             "HEAD",
-            "DELETE",
-            "PUT",
-            "POST",
-            "OPTIONS"
+            "DELETE"
         ],
         "maxAgeSeconds": 3600
     }

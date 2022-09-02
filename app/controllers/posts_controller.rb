@@ -5,10 +5,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @q = Post.ransack(params[:q])
+    @q = Post.with_rich_text_richbody_and_embeds.ransack(params[:q])
     @posts = @q.result.order(:title).page params[:page]
-    
-    # @posts = Post.order(:title).page params[:page]
   end
 
   # GET /posts/1 or /posts/1.json
@@ -28,11 +26,9 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = current_user.posts.build(post_params)
-    # @post = Post.new(post_params)
 
     respond_to do |format|
       if @post.save
-        # format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.html { redirect_to post_url(@post) }
         flash[:notice] = "Post was successfully created."
         format.json { render :show, status: :created, location: @post }
@@ -81,6 +77,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, :cover)
+      params.require(:post).permit(:title, :user_id, :richbody)
     end
 end
