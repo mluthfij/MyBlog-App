@@ -1,15 +1,11 @@
 <%= render 'profile' %>
 
 <%= render 'posts/search' %>
-<% if current_user.admin? && current_user.id == @profile.id %>
-  <%= render 'profiles/tab' %>
-<% end %>
+<%= render 'profiles/tab' %>
 
 <div class="text-center mb-2 my-4">
-  <h1 class="mb-3">My Posts</h1>
-  <% if current_user.admin? && current_user.id == @profile.id %>
+    <h1>All User Posts</h1>
     <%= link_to ' Create a new post', new_post_path, class:'btn btn-primary mb-3 bi bi-plus-lg' %>
-  <% end %>
 </div>
 
 <div class="container">

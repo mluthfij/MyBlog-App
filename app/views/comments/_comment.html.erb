@@ -11,6 +11,11 @@
             <div class="row">
                 <div class="col-sm-3 col-md-5 col-lg-2 text-center">
                     <div>
+                        <% if comment.user.admin? %>
+                            <h6 class="text-center">
+                            <span class="badge rounded-pill text-bg-danger">Admin</span>
+                            </h6>
+                        <% end %>
                         <% if comment.user.avatar.present? %>
                             <%= link_to image_tag(comment.user.avatar.variant(resize_to_fill: [100, 100]), class: "avatar shadow rounded-circle"), profile_path(comment.user.id) %>
                         <% else %>

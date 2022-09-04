@@ -6,6 +6,11 @@
   <div class="card-body">
     <div class="row">
       <div class="col border">
+        <% if current_user.admin? %>
+          <h6 class="text-center my-3">
+            <span class="badge rounded-pill text-bg-danger">You are an admin</span>
+          </h6>
+        <% end %>
         <h1 class="text-center">
             <%= current_user.username %>
         </h1>

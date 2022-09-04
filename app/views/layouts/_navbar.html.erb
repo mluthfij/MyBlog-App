@@ -10,7 +10,9 @@
             <%= link_to 'Posts', posts_path, class:"nav-link" %>
         </li>
       </ul>
+
       <form class="d-flex" role="search">
+
       <div class="btn-group">
         <button type="button" class="btn text-white dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
         <% if user_signed_in? %>
@@ -19,8 +21,10 @@
           <% else %>
             <%= image_tag("https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-user-mysterious-anonymous-account-vector-png-image_4816288.png", size: "200x200", alt: "...", class:"avatar-sm shadow rounded-circle img-thumbnail") %>
           <% end %>
-          
-            <%= current_user.username %>
+            <%= truncate(current_user.username, length:10) %>
+            <% if current_user.admin? %>
+              <span class="badge rounded-pill text-bg-danger">Admin</span>
+            <% end %>
           <% else %>
             <%= image_tag("https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-user-mysterious-anonymous-account-vector-png-image_4816288.png", size: "200x200", alt: "...", class:"avatar-sm shadow rounded-circle img-thumbnail") %>
             Log in?
@@ -48,6 +52,7 @@
             </li>
           <% end %> 
         </ul>
+
       </div>
 
       </form>

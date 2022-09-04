@@ -1,0 +1,45 @@
+<div class="container my-4">
+    <h1 class="text-center">User Lists</h1>
+    <div class="list-group my-4 text-center shadow">
+    <div class="list-group-item list-group-item-dark">
+        <div class="row row-cols-3 row-cols-lg-3">
+            <div class="col">
+                <strong> 
+                    User
+                </strong>
+            </div>
+            <div class="col">
+                <strong>
+                    Join
+                </strong>
+            </div>
+            <div class="col">
+                <strong>
+                    Change Role
+                </strong>
+            </div>
+        </div>
+    </div>
+        <% obj.each do |list| %>
+            <div class="list-group-item list-group-item-action">
+                <div class="row row-cols-3 row-cols-lg-3">
+                    <div class="col">
+                        <% if list.admin == true %>
+                            <span class="badge rounded-pill text-bg-danger">Admin</span>
+                        <% end %>
+                        <%= link_to list.username, profile_path(list) %>
+                    </div>
+                    <div class="col">
+                        <%= time_ago_in_words(list.created_at) %> ago
+                    </div>
+                    <div class="col">
+                        <% if current_user.id != list.id %>
+                            <%= link_to list.admin == true ? "User" : "Admin", profile_path(list), method: :patch, class:list.admin == true ? "btn btn-warning" : "btn btn-danger" %> |
+                            <%= link_to 'Delete', profile_path(list), method: :delete, class:"btn btn-warning", data: { confirm: "are you sure?" } %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -4,7 +4,7 @@
     <form action="" id="myForm">
       <%= search_form_for @q do |f| %>
         <div class="input-group">
-          <%= f.text_field :title_cont, class: 'form-control', placeholder:"Search" %>
+          <%= f.text_field :title_cont, id:"myInput", class: 'form-control', placeholder:"Search" %>
           <%= f.submit 'Submit', class: 'btn btn-success' %>
         </div>
       <% end %>
@@ -25,7 +25,7 @@
   </li>
   <li class="nav-item mb-4">
     <a class="nav-link">
-      <%= link_to 'Reset', posts_path, class:"fs-3", onclick:"myFunction()" %>
+      <%= link_to 'Reset', request.path, :onclick => "$('#').reset()", class:"fs-3" %>
     </a>
   </li>
 </ul>
