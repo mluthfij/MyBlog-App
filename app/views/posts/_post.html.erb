@@ -37,14 +37,16 @@
       </div>
       
         <%#  %>
-        <% if current_user.admin? && params[:action] != 'home' %>
+        <%# <% if current_user.admin? && params[:action] != 'home' %>
+        <% if current_user.admin == true && params[:action] != 'home' %>
             <%= link_to 'Delete', "/profiles/#{post.user.id}/destroy_post/#{post.id}", class:"btn btn-danger m-1", method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin != post.user.admin %>
         <% end %>
         <%#  %>
       <div class="card-footer text-center">
       <h6>by 
         <%= link_to truncate(post.user.username, length: 15), profile_path(post.user.id), class:"text-decoration-none" %>
-        <% if post.user.admin? %>
+        <%# <% if post.user.admin? %>
+        <% if post.user.admin == true %>
           <span class="badge rounded-pill text-bg-danger">Admin</span>
         <% end %>
       </h6>
