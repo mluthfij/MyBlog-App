@@ -7,8 +7,13 @@
 
 <div class="text-center mb-2 my-4">
   <h1 class="mb-3">My Posts</h1>
-  <% if current_user.admin? && current_user.id == @profile.id %>
+  <%# <% if current_user.admin? && current_user.id == @profile.id %>
     <%= link_to ' Create a new post', new_post_path, class:'btn btn-primary mb-3 bi bi-plus-lg' %>
+  <%# <% else %>
+    <%# <%= link_to ' Create a new post', new_post_path, class:'btn btn-primary mb-3 bi bi-plus-lg' %>
+  <%# <% end %>
+  <% if current_user.posts.empty? %>
+    <%= render 'pages/emptyalert' %>
   <% end %>
 </div>
 
