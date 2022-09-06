@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = current_user.posts.build
-    # @post = Post.new
   end
 
   # GET /posts/1/edit
@@ -65,11 +64,10 @@ class PostsController < ApplicationController
   end
 
   private
-  
-  def correct_user
-    @post = current_user.posts.find_by(id: params[:id])
-    redirect_to posts_path, notice: "Not authorized to edit this post" if @post.nil?
-  end
+    def correct_user
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to posts_path, notice: "Not authorized to edit this post" if @post.nil?
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_post

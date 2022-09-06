@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
    before_action :configure_permitted_parameters, if: :devise_controller?
 
    protected
@@ -16,5 +17,11 @@ class ApplicationController < ActionController::Base
    def authenticate_admin!
       authenticate_user!
       redirect_to :somewhere, status: :forbidden unless current_user.admin?
+   end
+
+   private
+   def record_not_found
+      redirect_to root_path
+      flash[:notice] = "Record not found!"
    end
 end

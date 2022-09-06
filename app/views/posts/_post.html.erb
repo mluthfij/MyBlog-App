@@ -8,18 +8,18 @@
 <% obj.each do |post| %>
   <div class="col">
     <div class="card card-hover h-100">
-      <%#  %>
       <% if !post.richbody.embeds.empty? %>
         <%= link_to post_path(post) do %>
           <%= image_tag post.richbody.embeds.find{|embeds| embeds.image?}.variant(loader: { page: nil }, coalesce: true, resize_to_limit: [500, 500]), height:"250px", class:"card-img-top card-image" %>
         <% end %>
+        <%#  %>
+      <%= post.richbody.embeds.find{|embeds| embeds.image?}.blank? %>
+        <%#  %>
       <% else %>
         <%= link_to image_tag("https://kecamatanmegamendung.bogorkab.go.id/assets/imgs/placeholder.png", size: "200x200", alt: "...", class:"card-img-top"), post %>
       <% end %>
-      <%#  %>
       <div class="card-body">
         <h5 class="card-title"><%= link_to truncate(post.title.upcase_first, length: 20), post, class:"text-decoration-none text-dark" %></h5>
-        <%# <p class="card-text" style="text-align:justify"><%= truncate(post.body, length: 125) %>
         <p style="text-align:justify;">
           <%= truncate(post.richbody.to_plain_text.upcase_first, length:125) %>
         </p>
@@ -36,12 +36,9 @@
         <% end %>
       </div>
       
-        <%#  %>
-        <%# <% if current_user.admin? && params[:action] != 'home' %>
-        <% if current_user.try(:admin?) && params[:action] != 'home' %>
-            <%= link_to 'Delete', "/profiles/#{post.user.id}/destroy_post/#{post.id}", class:"btn btn-danger m-1", method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin != post.user.admin %>
-        <% end %>
-        <%#  %>
+      <% if current_user.try(:admin?) && params[:action] != 'home' %>
+        <%= link_to 'Delete', "/profiles/#{post.user.id}/destroy_post/#{post.id}", class:"btn btn-danger m-1", method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin != post.user.admin %>
+      <% end %>
       <div class="card-footer text-center">
       <h6>by 
         <%= link_to truncate(post.user.username, length: 15), profile_path(post.user.id), class:"text-decoration-none" %>
