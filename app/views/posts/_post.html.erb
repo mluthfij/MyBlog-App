@@ -13,7 +13,7 @@
           <%= image_tag post.richbody.embeds.find{|embeds| embeds.image?}.variant(loader: { page: nil }, coalesce: true, resize_to_limit: [500, 500]), height:"250px", class:"card-img-top card-image" %>
         <% end %>
         <%#  %>
-      <%= post.richbody.embeds.find{|embeds| embeds.image?}.blank? %>
+      <%# <%= post.richbody.embeds.find{|embeds| embeds.image?}.blank? %>
         <%#  %>
       <% else %>
         <%= link_to image_tag("https://kecamatanmegamendung.bogorkab.go.id/assets/imgs/placeholder.png", size: "200x200", alt: "...", class:"card-img-top"), post %>
